@@ -28,7 +28,7 @@ local_credentials: &local_credentials
 development:
   <<: *default
   <<: *local_credentials
-  database: our_memories_monolith_development
+  database: our_memories_api_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,7 +63,7 @@ development:
 test:
   <<: *default
   <<: *local_credentials
-  database: our_memories_monolith_test
+  database: our_memories_api_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -87,6 +87,6 @@ test:
 #
 production:
   <<: *default
-  database: our_memories_monolith_production
-  username: our_memories_monolith
+  database: my_unsplash_api_production
+  username: my_unsplash_api
   password: <%= ENV['OUR_MEMORIES_MONOLITH_DATABASE_PASSWORD'] %>
