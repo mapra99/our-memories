@@ -1,0 +1,5 @@
+<% if content_for?(:stylesheet_pack) %>
+  <%= yield :stylesheet_pack %>
+<% else %>
+  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<% end %>
