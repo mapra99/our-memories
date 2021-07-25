@@ -1,0 +1,5 @@
+<% if content_for?(:javascript_pack) %>
+  <%= yield :javascript_pack %>
+<% else %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<% end %>
