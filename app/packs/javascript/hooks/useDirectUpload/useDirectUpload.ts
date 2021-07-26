@@ -8,7 +8,7 @@ export const useDirectUpload = (): DirectUploadTypes => {
   const [loading, setLoading] = useState<boolean>(false);
   const [fileSrc, setFileSrc] = useState<string | null>(null);
 
-  const { REACT_APP_DIRECT_UPLOADS_URL } = process.env;
+  const REACT_APP_DIRECT_UPLOADS_URL = process.env.REACT_APP_DIRECT_UPLOADS_URL;
 
   const uploadFile = async (file: File) => {
     setLoading(true);

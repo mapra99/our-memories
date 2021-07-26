@@ -1,7 +1,7 @@
 import React from 'react';
 import { MyUnsplashIcon } from '../../icons/MyUnsplashIcon';
 import { SearchBar } from '../SearchBar';
-//import { NewPhoto } from '../NewPhoto'; // TODO: mergin NewPhoto
+import { NewPhoto } from '../NewPhoto';
 import { MainHeaderContainer, MainHeaderNewPhotoContainer } from './MainHeader.styled';
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
@@ -13,7 +13,7 @@ export const MainHeader = () => {
       <MyUnsplashIcon />
       { !mobile && <SearchBar /> }
       <MainHeaderNewPhotoContainer>
-        {/* <NewPhoto /> */}
+        <NewPhoto />
       </MainHeaderNewPhotoContainer>
     </MainHeaderContainer>
   )
