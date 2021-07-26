@@ -1,5 +1,6 @@
-const { webpackConfig } = require('@rails/webpacker')
-const { merge } = require('webpack-merge')
+const { webpackConfig } = require('@rails/webpacker');
+const { merge } = require('webpack-merge');
+const DotenvPlugin = require('dotenv-webpack');
 const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const customConfig = {
@@ -16,7 +17,9 @@ const customConfig = {
     extensions: ['.css', '.tsx', '.ts', '.js']
   },
   plugins: [
-    new ForkTSCheckerWebpackPlugin()
+    new ForkTSCheckerWebpackPlugin(),
+    new DotenvPlugin(),
+
   ],
 }
 

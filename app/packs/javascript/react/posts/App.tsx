@@ -10,12 +10,12 @@ import { PostsProvider } from './contexts/PostsContext'; */
 
 const App = () => {
   //const client = initApollo();
-
+  console.log(process.env.API_URL)
   return (
     //<ApolloProvider client={client}>
     //  <PostsProvider>
         <MainLayout>
-          <div> Hola que tal </div>
+          <div> Hola que tal  { process.env.PASSWORD_2 }</div>
           {/* <PostsBody /> */}
         </MainLayout>
       //</PostsProvider>
