@@ -12,9 +12,9 @@ export const PostsGallery = ({ posts }: PostsGalleryProps) => {
 
   return (
     <PostsGalleryContainer>
-      { postsChunks.map((chunk: PostModel[]) => (
-        <PostsGalleryColumn>
-          { chunk.map(post => <PostThumbnail post={post} />) }
+      { postsChunks.map((chunk: PostModel[], index: number) => (
+        <PostsGalleryColumn key={index}>
+          { chunk.map(post => <PostThumbnail post={post} key={post.id} />) }
         </PostsGalleryColumn>
       ))}
     </PostsGalleryContainer>
