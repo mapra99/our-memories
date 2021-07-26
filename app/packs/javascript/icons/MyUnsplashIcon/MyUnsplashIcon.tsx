@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const MyUnsplashIcon = () => (
-  <svg width={120} version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="843 374 186 147">
+  <svg width={120} preserveAspectRatio="xMidYMid meet" viewBox="843 374 186 147">
     <g data-item-type="text" data-item="Business" id="logo__item--business" className="logo__item">
       <g className="logo__item__inner" transform="translate(846.0234375 519.2194001385822) scale(1 1) rotate(0 0 0)">
         <text data-part-id="logo__item--business" dy="0" dominant-baseline="auto" alignment-baseline="auto" font-family="Indie Flower" font-size="32px" fill="#613A90" letter-spacing="0" font-weight="normal" font-style="normal" data-font-family="Indie Flower" data-font-weight="normal" data-font-style="normal" data-ttf-url="/builder_assets/fontsttf/font-montserrat-bold-normal.ttf" data-font-filename="indie-flower-normal-normal">Our Memories</text>
