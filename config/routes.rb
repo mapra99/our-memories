@@ -8,4 +8,10 @@ Rails.application.routes.draw do
     resources :posts, only: [:index]
   end
 
+  # api namespace
+  namespace :api do
+    defaults format: :json do
+      resources :posts, only: %i[index create]
+    end
+  end
 end
