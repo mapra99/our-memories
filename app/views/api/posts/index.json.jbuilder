@@ -1,7 +1,3 @@
 json.array! @posts do |post|
-  json.id post.id
-  json.title post.title
-  json.imageUrl post.image_url
-  json.createdAt post.created_at
-  json.updatedAt post.updated_at
+  json.partial! 'api/posts/post', post: post
 end
