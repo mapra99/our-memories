@@ -1,16 +1,21 @@
 import { IServer } from './types'
 
 const buildRequest = (url: string, method: string, data: object = {}):Promise<Response> => {
-  const metaElement: HTMLMetaElement = document.querySelector('meta[name="csrf-token"]')
-
-  return fetch(url, {
+  const request: RequestInit = {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-Token': metaElement.content
-    },
-    body: JSON.stringify(data)
-  })
+    }
+  }
+
+  if (method !== 'GET') {
+    const metaElement: HTMLMetaElement = document.querySelector('meta[name="csrf-token"]')
+    request.headers['X-CSRF-Token'] = metaElement.content
+
+    request.body = JSON.stringify(data)
+  }
+
+  return fetch(url, request)
 }
 
 export const server: IServer = {
