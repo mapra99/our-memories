@@ -1,21 +1,25 @@
 import React, { createContext, useState, useEffect } from "react"
-import { useMutation, useQuery } from '@apollo/client';
 import { IPostsContext, NewPostData } from './types'
-import { CREATE_POST } from '../../api/mutations/posts';
-import { FETCH_POSTS } from '../../api/queries/posts';
 import { PostModel } from '../../models';
+import { server } from '../../utils/server';
+import { POSTS_BASE_URL } from '../../constants';
 
 export const PostsContext = createContext<IPostsContext | null>(null);
 
 export const PostsProvider: React.FC = ({children}) => {
   const [posts, setPosts] = useState<PostModel[]>([])
-  const [createPostRequest] = useMutation(CREATE_POST)
-  const {data: fetchPostsData} = useQuery(FETCH_POSTS)
+
+  const fetchPosts = async () => {
+    const response = await server.get(POSTS_BASE_URL)
+    const data = await response.json()
+    
+    setPosts(data)
+  }
 
   const createPost = async (postData: NewPostData) => {
     const {title, blob} = postData;
-    const result = await createPostRequest({ variables: { createPostInput: { title, signedBlobId: blob.signed_id }}})
-    const post = result.data.createPost
+    const response = await server.post(POSTS_BASE_URL, { post: { title }, blob })
+    const post = await response.json()
 
     setPosts([
       post,
@@ -26,12 +30,12 @@ export const PostsProvider: React.FC = ({children}) => {
   }
 
   useEffect(() => {
-    if (fetchPostsData) setPosts(fetchPostsData.fetchPosts)
-  }, [fetchPostsData])
+    fetchPosts()
+  }, [])
 
   const contextVal: IPostsContext = {
     posts,
-    createPost,
+    createPost
   }
 
   return (
