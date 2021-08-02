@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   validates_presence_of :title
 
   scope :sorted_by_newest, -> { order(created_at: :desc) }
+  scope :eager_load_image, -> { includes(image_attachment: :blob) }
 
   def image_url
     return '' unless image.attached?
