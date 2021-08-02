@@ -56,8 +56,8 @@ RSpec.describe '/api/posts', type: :request do
       it 'should have all paginated posts' do
         expect(@payload.length).to eq(3)
         expect(@payload[0]['id']).to eq(posts[2].id)
-        expect(@payload[1]['id']).to eq(posts[3].id)
-        expect(@payload[2]['id']).to eq(posts[4].id)
+        expect(@payload[1]['id']).to eq(posts[1].id)
+        expect(@payload[2]['id']).to eq(posts[0].id)
       end
   
       example 'payload structure' do
