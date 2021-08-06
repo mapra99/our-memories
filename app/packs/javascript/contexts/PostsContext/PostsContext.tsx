@@ -16,7 +16,7 @@ export const PostsProvider: React.FC = ({children}) => {
     fetchPage,
     fetchPageOnCallback,
     loading: loadingPostsFetch,
-    end: endPostsFetch } = usePagination<PostModel>({url: POSTS_BASE_URL, initialOffset: mobile ? 10 : 20 })
+    end: endPostsFetch } = usePagination<PostModel>({url: POSTS_BASE_URL, limit: mobile ? 5 : 10 })
 
   const createPost = async (postData: NewPostData) => {
     const {title, blob} = postData;
