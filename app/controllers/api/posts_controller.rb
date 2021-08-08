@@ -11,6 +11,13 @@ class Api::PostsController < ApiController
     render json: @post.errors.full_messages, status: 401 unless @post.save
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    head :no_content
+  end
+
   private
 
   def post_params
