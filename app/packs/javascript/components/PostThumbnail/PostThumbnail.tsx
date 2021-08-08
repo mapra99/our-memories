@@ -5,14 +5,21 @@ import {
   ThumbnailImage,
   ThumbnailHoverContainer,
   ThumbnailTitle } from './PostThumbnail.styled';
+import { useBreakpoint } from '../../hooks/useBreakpoint'
 
-export const PostThumbnail = ({post}: PostThumbnailProps) => (
-  <ThumbnailContainer>
-    <ThumbnailImage src={post.imageUrl} alt={post.title} />
-    <ThumbnailHoverContainer>
-      <ThumbnailTitle>
-        {post.title}
-      </ThumbnailTitle>
-    </ThumbnailHoverContainer>
-  </ThumbnailContainer>
-)
+export const PostThumbnail = ({post}: PostThumbnailProps) => {
+  const { desktop } = useBreakpoint();
+
+  return (
+    <ThumbnailContainer>
+      <ThumbnailImage src={post.imageUrl} alt={post.title} />
+      { desktop && (
+        <ThumbnailHoverContainer>
+          <ThumbnailTitle>
+            {post.title}
+          </ThumbnailTitle>
+        </ThumbnailHoverContainer>
+      )}
+    </ThumbnailContainer>
+  )
+}
