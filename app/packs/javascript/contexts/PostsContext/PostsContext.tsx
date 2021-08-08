@@ -1,4 +1,4 @@
-import React, { createContext, useEffect } from "react"
+import React, { createContext } from "react"
 import { IPostsContext, NewPostData } from './types'
 import { PostModel } from '../../models';
 import { server } from '../../utils/server';
@@ -13,7 +13,6 @@ export const PostsProvider: React.FC = ({children}) => {
   const {
     data: posts,
     setData: setPosts,
-    fetchPage,
     fetchPageOnCallback,
     loading: loadingPostsFetch,
     end: endPostsFetch } = usePagination<PostModel>({url: POSTS_BASE_URL, limit: mobile ? 5 : 10 })
@@ -30,10 +29,6 @@ export const PostsProvider: React.FC = ({children}) => {
 
     return post;
   }
-
-  useEffect(() => {
-    fetchPage()
-  }, [])
 
   const contextVal: IPostsContext = {
     posts,

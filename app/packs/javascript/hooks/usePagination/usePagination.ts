@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useScroll } from '../useScroll'
 import { server } from '../../utils/server'
 import { PaginationParams } from './types'
 
@@ -7,11 +8,13 @@ export const usePagination = <DataType>({url, limit = 10, initialOffset = 0}: Pa
   const [offset, setOffset] = useState<number>(initialOffset)
   const [loading, setLoading] = useState<boolean>(false);
   const [end, setEnd] = useState<boolean>(false);
+  const {scrollY} = useScroll();
 
   const fetchPage = async () => {
     if (loading || end) return;
 
     setLoading(true)
+
     const requestUrl = `${url}?limit=${limit}&offset=${offset}`;
     const response = await server.get(requestUrl);
     const newChunk = await response.json();
@@ -24,7 +27,7 @@ export const usePagination = <DataType>({url, limit = 10, initialOffset = 0}: Pa
       return
     }
     setData(allData)
-    setOffset(offset + allData.length)
+    setOffset(offset + limit)
 
     return allData;
   }
@@ -33,6 +36,11 @@ export const usePagination = <DataType>({url, limit = 10, initialOffset = 0}: Pa
     fetchPage,
     [limit, offset, data, loading, end]
   )
+
+  useEffect(() => {
+    const windowBottom = document.body.clientHeight - window.innerHeight;
+    if (scrollY > windowBottom - 200 ) fetchPageOnCallback()
+  }, [scrollY])
 
   return {
     data,
