@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PostViewerModal } from '../PostViewerModal';
+import { PostsViewerCarousel } from '../PostsViewerCarousel';
 import { PostThumbnailProps } from './types';
 import {
   ThumbnailContainer,
@@ -26,8 +26,8 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
       </ThumbnailContainer>
 
       { viewerVisible && (
-        <PostViewerModal
-          post={post}
+        <PostsViewerCarousel
+          activePost={post}
           onClose={() => setViewerVisible(false)}
         /> 
       )}

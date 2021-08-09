@@ -9,11 +9,20 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
+  background-color: ${COLORS.black}40;
+  z-index: 10;
+  
+  .splide__slide {
+    height: 100vh;
+  }
+`;
+
+export const ModalDialogContainer = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${COLORS.black}40;
-  z-index: 10;
 `;
 
 export const ModalDialog = styled.div`
