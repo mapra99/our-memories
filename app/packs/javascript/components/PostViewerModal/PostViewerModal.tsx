@@ -6,7 +6,10 @@ import { PostViewerModalProps } from './types';
 
 export const PostViewerModal = ({ post, onClose }: PostViewerModalProps) => {
   return (
-    <Modal onClose={onClose}>
+    <Modal
+      onClose={onClose}
+      maxWidth="1200px"
+    >
       <ModalTitle>
         {post.title}
       </ModalTitle>

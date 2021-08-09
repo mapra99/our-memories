@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const PostViewerImage = styled.img`
-  width: 100%;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0;
+  max-height: calc(100vh - 200px);
+  max-width: 100%;
   border-radius: 16px;
 `;

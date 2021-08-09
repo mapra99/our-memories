@@ -9,7 +9,7 @@ import { useKeyDown } from '../../hooks/useKeyDown';
 
 import { ModalProps } from './types';
 
-export const Modal = ({ children, onClose }: ModalProps) => {
+export const Modal = ({ children, onClose, maxWidth }: ModalProps) => {
   const { keyCode } = useKeyDown();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const Modal = ({ children, onClose }: ModalProps) => {
 
   return (
     <ModalContainer onKeyDown={() => console.log("holi")}>
-      <ModalDialog>
+      <ModalDialog maxWidth={maxWidth} >
         <ModalCloseButton onClick={onClose}>
           <CrossFilledIcon />
         </ModalCloseButton>

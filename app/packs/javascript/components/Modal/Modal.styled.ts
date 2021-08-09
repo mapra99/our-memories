@@ -20,7 +20,7 @@ export const ModalDialog = styled.div`
   background-color: ${COLORS.white};
   box-sizing: border-box;
   width: 100%;
-  max-width: 620px;
+  max-width: ${props => props.maxWidth ? props.maxWidth : "620px"};
   margin: 0 16px;
   padding: 16px;
   border-radius: 12px;
