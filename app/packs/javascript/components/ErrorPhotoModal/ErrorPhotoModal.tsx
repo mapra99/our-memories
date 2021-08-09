@@ -8,7 +8,7 @@ import { CrossIcon } from '../../icons/CrossIcon'
 import { ErrorPhotoModalIconWrap } from './ErrorPhotoModal.styled'
 
 export const ErrorPhotoModal = ({onClose}: ErrorPhotoModalProps) => (
-  <Modal>
+  <Modal onClose={onClose}>
     <ErrorPhotoModalIconWrap>
       <CrossIcon />
     </ErrorPhotoModalIconWrap>

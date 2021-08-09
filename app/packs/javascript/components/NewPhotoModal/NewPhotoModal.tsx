@@ -31,7 +31,7 @@ export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalPro
   }
 
   return (
-    <Modal>
+    <Modal onClose={onClose}>
       <ModalTitle>
         Add a new photo
       </ModalTitle>

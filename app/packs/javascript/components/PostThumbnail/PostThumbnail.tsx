@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PostViewerModal } from '../PostViewerModal';
 import { PostThumbnailProps } from './types';
 import {
   ThumbnailContainer,
@@ -8,18 +9,28 @@ import {
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 export const PostThumbnail = ({post}: PostThumbnailProps) => {
+  const [viewerVisible, setViewerVisible] = useState(false);
   const { desktop } = useBreakpoint();
 
   return (
-    <ThumbnailContainer>
-      <ThumbnailImage src={post.imageUrl} alt={post.title} />
-      { desktop && (
-        <ThumbnailHoverContainer>
-          <ThumbnailTitle>
-            {post.title}
-          </ThumbnailTitle>
-        </ThumbnailHoverContainer>
+    <>
+      <ThumbnailContainer onClick={() => setViewerVisible(true)}>
+        <ThumbnailImage src={post.imageUrl} alt={post.title} />
+        { desktop && (
+          <ThumbnailHoverContainer>
+            <ThumbnailTitle>
+              {post.title}
+            </ThumbnailTitle>
+          </ThumbnailHoverContainer>
+        )}
+      </ThumbnailContainer>
+
+      { viewerVisible && (
+        <PostViewerModal
+          post={post}
+          onClose={() => setViewerVisible(false)}
+        /> 
       )}
-    </ThumbnailContainer>
+    </>
   )
 }

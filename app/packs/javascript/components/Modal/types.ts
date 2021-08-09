@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
 export type ModalProps = {
-  children: ReactNode
+  children: ReactNode,
+  onClose: () => void
 }
