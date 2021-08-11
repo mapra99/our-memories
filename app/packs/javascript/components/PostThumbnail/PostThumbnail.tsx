@@ -9,6 +9,7 @@ import {
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 export const PostThumbnail = ({post}: PostThumbnailProps) => {
+  
   const [viewerVisible, setViewerVisible] = useState(false);
   const { desktop } = useBreakpoint();
 
@@ -32,5 +33,21 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
         /> 
       )}
     </>
+<!-- TEA -->
+{/*      
+  const { desktop } = useBreakpoint();
+
+  return (
+    <ThumbnailContainer>
+      <ThumbnailImage src={post.imageUrl} alt={post.title} />
+      { desktop && (
+        <ThumbnailHoverContainer>
+          <ThumbnailTitle>
+            {post.title}
+          </ThumbnailTitle>
+        </ThumbnailHoverContainer>
+      )}
+    </ThumbnailContainer>
+*/}
   )
 }
