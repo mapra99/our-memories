@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PostsViewerCarousel } from '../PostsViewerCarousel';
 import { PostThumbnailProps } from './types';
 import {
   ThumbnailContainer,
@@ -8,6 +9,32 @@ import {
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 export const PostThumbnail = ({post}: PostThumbnailProps) => {
+  
+  const [viewerVisible, setViewerVisible] = useState(false);
+  const { desktop } = useBreakpoint();
+
+  return (
+    <>
+      <ThumbnailContainer onClick={() => setViewerVisible(true)}>
+        <ThumbnailImage src={post.imageUrl} alt={post.title} />
+        { desktop && (
+          <ThumbnailHoverContainer>
+            <ThumbnailTitle>
+              {post.title}
+            </ThumbnailTitle>
+          </ThumbnailHoverContainer>
+        )}
+      </ThumbnailContainer>
+
+      { viewerVisible && (
+        <PostsViewerCarousel
+          activePost={post}
+          onClose={() => setViewerVisible(false)}
+        /> 
+      )}
+    </>
+<!-- TEA -->
+{/*      
   const { desktop } = useBreakpoint();
 
   return (
@@ -21,5 +48,6 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
         </ThumbnailHoverContainer>
       )}
     </ThumbnailContainer>
+*/}
   )
 }

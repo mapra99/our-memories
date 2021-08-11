@@ -8,7 +8,7 @@ import { SuccessPhotoModalIconWrap } from './SuccessPhotoModal.styled'
 import { CheckIcon } from '../../icons/CheckIcon'
 
 export const SuccessPhotoModal = ({onClose}: SuccessPhotoModalProps) => (
-  <Modal>
+  <Modal onClose={onClose}>
     <SuccessPhotoModalIconWrap>
       <CheckIcon/>
     </SuccessPhotoModalIconWrap>
