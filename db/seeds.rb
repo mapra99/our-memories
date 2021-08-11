@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts 'Creating sample posts'
+100.times do |i|
+  post = Post.new(
+    title: "Post #{i} - #{Faker::ChuckNorris.fact}"
+  )
+
+  image_file = "dummy-#{(1..5).to_a.sample}.png"
+  post.image.attach(io: File.open("spec/files/#{image_file}"), filename: image_file, content_type: 'image/png')
+  post.save!
+
+  puts '---'
+  puts post.id
+  puts post.title
+  puts post.image_url
+end

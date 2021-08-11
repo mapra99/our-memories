@@ -1,6 +1,6 @@
 class Api::PostsController < ApiController
   def index
-    @posts = Post.all.sorted_by_newest
+    @posts = Post.eager_load_image.all.sorted_by_newest
     @posts = @posts.paginate(@limit, @offset) if @limit.present?
   end
 
