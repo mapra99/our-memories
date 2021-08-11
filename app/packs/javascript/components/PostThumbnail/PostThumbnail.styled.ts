@@ -5,6 +5,7 @@ export const ThumbnailContainer = styled.div`
   position: relative;
   margin: 46px 0;
   border-radius: 16px;
+  cursor: pointer;
 `
 
 export const ThumbnailImage = styled.img`

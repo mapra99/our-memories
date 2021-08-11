@@ -6,12 +6,10 @@ export interface NewPostData {
   blob: IBlob;
 }
 
-export interface PaginationParams {
-  limit?: number;
-  offset?: number;
-}
-
 export interface IPostsContext {
   posts: PostModel[]
   createPost: (postData: NewPostData) => Promise<PostModel>
+  fetchPageOnCallback: () => Promise<PostModel[]>
+  loadingPostsFetch: boolean,
+  endPostsFetch: boolean
 }
