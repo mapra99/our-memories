@@ -33,21 +33,5 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
         /> 
       )}
     </>
-<!-- TEA -->
-{/*      
-  const { desktop } = useBreakpoint();
-
-  return (
-    <ThumbnailContainer>
-      <ThumbnailImage src={post.imageUrl} alt={post.title} />
-      { desktop && (
-        <ThumbnailHoverContainer>
-          <ThumbnailTitle>
-            {post.title}
-          </ThumbnailTitle>
-        </ThumbnailHoverContainer>
-      )}
-    </ThumbnailContainer>
-*/}
   )
 }

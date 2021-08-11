@@ -105,7 +105,7 @@ RSpec.describe '/api/posts', type: :request do
       end
     end
   end
-###TEA init
+
   context 'DELETE' do
     describe 'post deletion' do
       let(:post) { create(:post_with_image) }
@@ -120,6 +120,9 @@ RSpec.describe '/api/posts', type: :request do
 
       it 'deletes the specified post' do
         expect(Post.find_by_id(post.id)).to be_nil
+      end
+    end
+  end
         
   context 'PUT' do
     describe 'post editing' do
@@ -179,7 +182,6 @@ RSpec.describe '/api/posts', type: :request do
         it "shouldn't update the post" do
           expect(@updated_post.title).to eq(post.title)
         end
-### TEA end
       end
     end
   end

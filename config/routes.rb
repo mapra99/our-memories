@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   # api namespace
   namespace :api do
     defaults format: :json do
-      resources :posts, only: %i[index create destroy]
-      resources :posts, only: %i[index create update]
+      resources :posts, only: %i[index create destroy update]
     end
   end
 end
