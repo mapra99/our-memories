@@ -11,6 +11,13 @@ class Api::PostsController < ApiController
     render json: @post.errors.full_messages, status: 401 unless @post.save
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+
+    render json: @post.errors.full_messages, status: 401 unless @post.valid?
+  end
+
   private
 
   def post_params

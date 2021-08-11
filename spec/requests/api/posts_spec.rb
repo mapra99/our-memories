@@ -105,4 +105,66 @@ RSpec.describe '/api/posts', type: :request do
       end
     end
   end
+
+  context 'PUT' do
+    describe 'post editing' do
+      let(:post) { create :post_with_image }
+
+      describe 'edit post title' do
+        let(:new_title) { Faker::ChuckNorris.fact }
+        let(:request_params) do
+          {
+            post: {
+              title: new_title
+            }
+          }
+        end
+
+        before :each do
+          put("/api/posts/#{post.id}", params: request_params.to_json,
+                                       headers: { 'Content-Type' => 'application/json' })
+          @payload = JSON.parse(response.body)
+          @updated_post = Post.find(post.id)
+        end
+
+        it 'should respond with a 200 status' do
+          expect(response.status).to eq(200)
+        end
+
+        it 'should return a payload with the post attributes updated' do
+          expect(@payload['title']).to eq(new_title)
+        end
+
+        it 'should have updated the post title' do
+          expect(@updated_post.title).not_to eq(post.title)
+          expect(@updated_post.title).to eq(new_title)
+        end
+      end
+
+      describe 'sending a request with invalid body' do
+        let(:invalid_params) do
+          {
+            post: {
+              title: ''
+            }
+          }
+        end
+
+        before :each do
+          put("/api/posts/#{post.id}", params: invalid_params.to_json,
+                                       headers: { 'Content-Type' => 'application/json' })
+          @payload = JSON.parse(response.body)
+          @updated_post = Post.find(post.id)
+        end
+
+        it 'should respond with a bad request' do
+          expect(response.status).to eq(401)
+        end
+
+        it "shouldn't update the post" do
+          expect(@updated_post.title).to eq(post.title)
+        end
+      end
+    end
+  end
 end
