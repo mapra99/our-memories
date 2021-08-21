@@ -38,3 +38,4 @@ yarn-debug.log*
 # Personalized
 .env
 /coverage
+.DS_Store
