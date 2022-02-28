@@ -5,6 +5,8 @@ export const MainHeaderContainer = styled.div`
   align-items: center;
 `
 
-export const MainHeaderNewPhotoContainer = styled.div`
+export const MainHeaderRightContainer = styled.div`
   margin-left: auto;
+  display: flex; 
+  gap: 10px;
 `

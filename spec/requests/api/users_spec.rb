@@ -6,15 +6,14 @@ RSpec.describe Api::UsersController, type: :controller do
     describe 'not authenticated' do
       before :each do
         get :current, format: :json
-        @payload = JSON.parse(response.body)
       end
 
-      it 'should respond with a 200 status' do
-        expect(response.status).to eq(200)
+      it 'should respond with a 204 status' do
+        expect(response.status).to eq(204)
       end
 
       it 'is empty' do
-        expect(@payload).to be_empty
+        expect(response.body).to be_empty
       end
     end
 

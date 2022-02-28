@@ -1,10 +1,8 @@
 class Api::UsersController < ApiController
   
   def current
-    if user_signed_in?
-      @current_user = current_user
-    else
-      render json: {}
-    end
+    head :no_content and return unless user_signed_in?
+
+    @current_user = current_user
   end
 end
