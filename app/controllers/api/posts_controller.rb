@@ -1,4 +1,6 @@
 class Api::PostsController < ApiController
+  before_action :authenticate_user!
+
   def index
     @posts = Post.eager_load_image.all.sorted_by_newest
     @posts = @posts.paginate(@limit, @offset) if @limit.present?
