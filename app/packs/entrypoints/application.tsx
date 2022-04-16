@@ -13,9 +13,6 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import '../styles/test.scss'
-
-console.log('Hello World from Webpacker')
+import '../styles/auth/index.scss'

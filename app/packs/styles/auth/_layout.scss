@@ -1,0 +1,105 @@
+.auth {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: $jet;
+  max-width: 375px;
+  padding: 40px 16px;
+  box-sizing: border-box;
+
+  &__logo {
+    margin: 0 0 30px 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .field {
+    margin-bottom: 18px;
+
+    label {
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    input:not([type="checkbox"]) {
+      width: 100%;
+      display: block;
+      height: 55px;
+      line-height: 55px;
+      padding: 0 18px;
+      border: 1px solid $davisGray;
+      border-radius: 12px;
+      font-family: 'Noto Sans', sans-serif;
+      box-sizing: border-box;
+    }
+  }
+
+  .actions {
+    margin: 24px 0;
+
+    button, a, input {
+      height: 55px;
+      line-height: 55px;
+      min-width: 140px;
+      padding: 0 25px;
+      font-family: 'Noto Sans';
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: none;
+      transition: background 0.15s;
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+      background: none;
+      transition: background 0.15s;
+      margin: auto;
+      display: block;
+
+      &:hover, &:focus {
+        background: darken($grayX, 10%);
+        outline: none;
+        cursor: pointer;
+      }
+
+      &[type="submit"] {
+        color: $white;
+        background: $mediumSeaGreen;
+
+        &:hover, &:focus {
+          background: darken($mediumSeaGreen, 10%);
+        }
+      }
+    }
+  }
+
+  &__error-messages {
+    margin-bottom: 20px;
+    color: $redSalsa;
+  }
+
+  &__links {
+    > * {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  }
+}

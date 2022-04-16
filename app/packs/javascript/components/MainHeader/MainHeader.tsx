@@ -2,7 +2,8 @@ import React from 'react';
 import { MyUnsplashIcon } from '../../icons/MyUnsplashIcon';
 import { SearchBar } from '../SearchBar';
 import { NewPhoto } from '../NewPhoto';
-import { MainHeaderContainer, MainHeaderNewPhotoContainer } from './MainHeader.styled';
+import { LogoutButton } from '../LogoutButton'
+import { MainHeaderContainer, MainHeaderRightContainer } from './MainHeader.styled';
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 export const MainHeader = () => {
@@ -12,9 +13,10 @@ export const MainHeader = () => {
     <MainHeaderContainer>
       <MyUnsplashIcon />
       { !mobile && <SearchBar /> }
-      <MainHeaderNewPhotoContainer>
+      <MainHeaderRightContainer>
         <NewPhoto />
-      </MainHeaderNewPhotoContainer>
+        <LogoutButton />
+      </MainHeaderRightContainer>
     </MainHeaderContainer>
   )
 }
