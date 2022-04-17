@@ -11,7 +11,7 @@ RSpec.describe Api::PostsController, type: :controller do
 
     context 'GET' do
       describe 'with no params' do
-        let!(:posts) { create_list :post_with_image, 5 }
+        let!(:posts) { create_list :post_with_image, 5, user: user }
 
         before :each do
           get :index, format: :json
@@ -38,11 +38,12 @@ RSpec.describe Api::PostsController, type: :controller do
           expect(post).to have_key('imageUrl')
           expect(post).to have_key('createdAt')
           expect(post).to have_key('updatedAt')
+          expect(post).to have_key('user')
         end
       end
 
       describe 'with pagination params' do
-        let!(:posts) { create_list :post_with_image, 5 }
+        let!(:posts) { create_list :post_with_image, 5, user: user }
 
         before :each do
           get :index, params: { offset: 2, limit: 3 }, format: :json
@@ -72,6 +73,7 @@ RSpec.describe Api::PostsController, type: :controller do
           expect(post).to have_key('imageUrl')
           expect(post).to have_key('createdAt')
           expect(post).to have_key('updatedAt')
+          expect(post).to have_key('user')
         end
       end
     end
@@ -112,7 +114,7 @@ RSpec.describe Api::PostsController, type: :controller do
 
     context 'DELETE' do
       describe 'post deletion' do
-        let(:post) { create(:post_with_image) }
+        let(:post) { create(:post_with_image, user: user) }
 
         before :each do
           delete :destroy, params: { id: post.id }, format: :json
@@ -130,7 +132,7 @@ RSpec.describe Api::PostsController, type: :controller do
 
     context 'PUT' do
       describe 'post editing' do
-        let(:post) { create :post_with_image }
+        let(:post) { create :post_with_image, user: user }
 
         describe 'edit post title' do
           let(:new_title) { Faker::ChuckNorris.fact }

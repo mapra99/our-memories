@@ -7,21 +7,21 @@ class Api::PostsController < ApiController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     @post.image.attach(blob_params[:signed_id])
 
     render json: @post.errors.full_messages, status: 401 unless @post.save
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
 
     head :no_content
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.update(post_params)
 
     render json: @post.errors.full_messages, status: 401 unless @post.valid?

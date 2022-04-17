@@ -30,9 +30,20 @@ export const PostsProvider: React.FC = ({children}) => {
     return post;
   }
 
+  const deletePost = async (post: PostModel) => {
+    await server.del(`${POSTS_BASE_URL}/${post.id}`)
+
+    const newPosts = [...posts]
+    const postIndex = newPosts.findIndex(el => el.id === post.id)
+    newPosts.splice(postIndex, 1)
+
+    setPosts(newPosts);
+  }
+
   const contextVal: IPostsContext = {
     posts,
     createPost,
+    deletePost,
     fetchPageOnCallback,
     loadingPostsFetch,
     endPostsFetch

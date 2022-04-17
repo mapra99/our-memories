@@ -8,7 +8,8 @@ export interface NewPostData {
 
 export interface IPostsContext {
   posts: PostModel[]
-  createPost: (postData: NewPostData) => Promise<PostModel>
+  createPost: (postData: NewPostData) => Promise<PostModel>,
+  deletePost: (post: PostModel) => void,
   fetchPageOnCallback: () => Promise<PostModel[]>
   loadingPostsFetch: boolean,
   endPostsFetch: boolean

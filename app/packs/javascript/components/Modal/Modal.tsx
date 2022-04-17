@@ -22,7 +22,7 @@ const SingleModalDialog = ({ children, onClose, maxWidth}: SingleModalDialogProp
   </ModalDialogContainer>
 )
 
-export const Modal = ({ children, onClose, maxWidth, carousel=false, start=0 }: ModalProps) => {
+export const Modal = ({ children, onClose, maxWidth, onMoved, carousel=false, start=0 }: ModalProps) => {
   const { keyCode } = useKeyDown();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const Modal = ({ children, onClose, maxWidth, carousel=false, start=0 }: 
   return (
     <ModalContainer onKeyDown={() => console.log("holi")}>
       { carousel ? (
-        <Splide options={splideOptions}>
+        <Splide options={splideOptions} onMoved={onMoved}>
           {children.map((child, index) => (
             <SplideSlide key={index}>
               <SingleModalDialog
