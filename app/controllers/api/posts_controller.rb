@@ -30,7 +30,7 @@ class Api::PostsController < ApiController
   private
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, :album_id)
   end
 
   def blob_params

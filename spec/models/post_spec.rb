@@ -4,6 +4,7 @@ RSpec.describe Post, type: :model do
   context 'associations' do
     it { should have_one_attached(:image) }
     it { should belong_to(:user) }
+    it { should belong_to(:album).optional}
   end
 
   context 'validations' do
