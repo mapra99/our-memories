@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 import { PostsViewerCarousel } from '../PostsViewerCarousel';
+import { PostDeleteModal } from '../PostDeleteModal';
 import { PostThumbnailProps } from './types';
 import {
   ThumbnailContainer,
   ThumbnailImage,
   ThumbnailHoverContainer,
-  ThumbnailTitle } from './PostThumbnail.styled';
+  ThumbnailTitle,
+  ThumbnailDeleteButton } from './PostThumbnail.styled';
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
 export const PostThumbnail = ({post}: PostThumbnailProps) => {
-  
+  const { currentUser } = useContext(AuthContext);
   const [viewerVisible, setViewerVisible] = useState(false);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const { desktop } = useBreakpoint();
+
+  const handleDelete = (event) => {
+    event.stopPropagation();
+    setDeleteModalVisible(true);
+  }
 
   return (
     <>
@@ -22,6 +31,11 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
             <ThumbnailTitle>
               {post.title}
             </ThumbnailTitle>
+            { currentUser?.id === post.user.id && (
+              <ThumbnailDeleteButton onClick={handleDelete}>
+                delete
+              </ThumbnailDeleteButton>
+            )}
           </ThumbnailHoverContainer>
         )}
       </ThumbnailContainer>
@@ -30,7 +44,15 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
         <PostsViewerCarousel
           activePost={post}
           onClose={() => setViewerVisible(false)}
-        /> 
+          onDelete={handleDelete}
+        />
+      )}
+
+      { deleteModalVisible && (
+        <PostDeleteModal
+          post={post}
+          onClose={() => setDeleteModalVisible(false)}
+        />
       )}
     </>
   )

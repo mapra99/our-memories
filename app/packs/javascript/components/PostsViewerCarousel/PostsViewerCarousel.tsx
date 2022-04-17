@@ -4,7 +4,7 @@ import { PostViewer } from '../PostViewer';
 import { PostsContext, IPostsContext } from '../../contexts/PostsContext';
 import { PostsViewerCarouselProps } from './types';
 
-export const PostsViewerCarousel = ({ activePost, onClose }: PostsViewerCarouselProps) => {
+export const PostsViewerCarousel = ({ activePost, onClose, onDelete }: PostsViewerCarouselProps) => {
   const {posts, fetchPageOnCallback} = useContext(PostsContext) as IPostsContext;
 
   const handleCarouselMoved = (_event, newIndex) => {
@@ -23,6 +23,7 @@ export const PostsViewerCarousel = ({ activePost, onClose }: PostsViewerCarousel
         <PostViewer
           key={post.id}
           post={post}
+          onDelete={onDelete}
         />
       ))}
     </Modal>

@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   include Paginable
 
   has_one_attached :image
+  belongs_to :user
 
   validates_presence_of :title
 

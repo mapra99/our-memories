@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post do
+    association :user
     title { Faker::Movie.title }
 
     factory :post_with_image do
