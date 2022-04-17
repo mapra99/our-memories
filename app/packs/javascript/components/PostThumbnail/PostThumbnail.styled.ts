@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { COLORS } from '../../constants'
+import { DangerButton } from '../DangerButton';
 
 export const ThumbnailContainer = styled.div`
   position: relative;
@@ -43,3 +44,23 @@ export const ThumbnailTitle = styled.h1`
   position: absolute;
   text-shadow: 0px 0px 15px ${COLORS.black};
 `
+
+export const ThumbnailDeleteButton = styled(DangerButton)`
+  position: absolute;
+  height: 23px;
+  line-height: 23px;
+  padding: 0 15px;
+  font-size: 10px;
+  background: none;
+  color: ${COLORS.redSalsa};
+  border: 1px solid ${COLORS.redSalsa};
+  border-radius: 38px;
+  min-width: auto;
+  right: 18px;
+  top: 18px;
+  transition: all 0.2s;
+
+  &:hover, &:focus {
+    color: ${COLORS.white};
+  }
+`;

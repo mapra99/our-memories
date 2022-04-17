@@ -38,6 +38,7 @@ RSpec.describe Api::PostsController, type: :controller do
           expect(post).to have_key('imageUrl')
           expect(post).to have_key('createdAt')
           expect(post).to have_key('updatedAt')
+          expect(post).to have_key('user')
         end
       end
 
@@ -72,6 +73,7 @@ RSpec.describe Api::PostsController, type: :controller do
           expect(post).to have_key('imageUrl')
           expect(post).to have_key('createdAt')
           expect(post).to have_key('updatedAt')
+          expect(post).to have_key('user')
         end
       end
     end
