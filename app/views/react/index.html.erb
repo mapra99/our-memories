@@ -1,0 +1,10 @@
+<% content_for :javascript_pack do %>
+  <%= javascript_pack_tag 'react/index', 'data-turbolinks-track': 'reload', defer: true %>
+<% end %>
+
+<% content_for :stylesheet_pack do %>
+  <%= stylesheet_pack_tag 'react/index', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<div id="root">
+</div>

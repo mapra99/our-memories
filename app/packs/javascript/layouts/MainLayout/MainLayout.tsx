@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainHeader } from '../MainHeader';
+import { MainHeader } from '../../components/MainHeader';
 import { MainLayoutProps } from './types';
 
 import {
