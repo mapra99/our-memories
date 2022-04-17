@@ -11,5 +11,6 @@ RSpec.describe User, type: :model do
 
   context 'associations' do
     it { should have_many(:posts) }
+    it { should have_many(:albums) }
   end
 end

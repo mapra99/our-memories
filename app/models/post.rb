@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
+  belongs_to :album, optional: true
 
   validates_presence_of :title
 
