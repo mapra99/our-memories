@@ -9,11 +9,11 @@ import {
   ThumbnailImage,
   ThumbnailHoverContainer,
   ThumbnailTitle,
-  ThumbnailDeleteButton } from './styled';
+  ThumbnailDeleteButton,
+  ThumbnailImagesWrapper } from './styled';
 import ROUTES from '../../navigation/routes';
 
 export const AlbumThumbnail = ({album}: AlbumThumbnailProps) => {
-  const { currentUser } = useContext(AuthContext);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const { mobile } = useBreakpoint();
 
@@ -22,11 +22,17 @@ export const AlbumThumbnail = ({album}: AlbumThumbnailProps) => {
     setDeleteModalVisible(true);
   }
 
+  const previewPosts = album.posts.slice(0, 3);
+
   return (
     <>
       <Link to={replaceParams(ROUTES.ALBUMS.SHOW, {id: album.id})}>
         <ThumbnailContainer>
-          <ThumbnailImage src={album.posts[0]?.imageUrl} alt={album.name} />
+          <ThumbnailImagesWrapper>
+            { previewPosts.map(post => (
+              <ThumbnailImage src={post.imageUrl} alt={post.title} />
+            )) }
+          </ThumbnailImagesWrapper>
           { !mobile && (
             <ThumbnailHoverContainer>
               <ThumbnailTitle>

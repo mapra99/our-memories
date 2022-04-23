@@ -9,12 +9,29 @@ export const ThumbnailContainer = styled.div`
   height: 375px;
 `
 
-export const ThumbnailImage = styled.img`
+export const ThumbnailImagesWrapper = styled.div`
   width: 100%;
-  display: block;
+  height: 100%;
   border-radius: 16px;
+  display: flex;
+  gap: 5px;
+  background: ${COLORS.grayX};
+`;
+
+export const ThumbnailImage = styled.div`
   height: 100%;
   object-fit: cover;
+  flex: 1 1;
+  background-image: url(${props => props.src});
+  background-position: center;
+
+  &:first-child {
+    border-radius: 16px 0 0 16px;
+  }
+
+  &:last-child {
+    border-radius: 0 16px 16px 0;
+  }
 `
 
 export const ThumbnailHoverContainer = styled.div`
