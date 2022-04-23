@@ -15,7 +15,7 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
   const { currentUser } = useContext(AuthContext);
   const [viewerVisible, setViewerVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-  const { desktop } = useBreakpoint();
+  const { mobile } = useBreakpoint();
 
   const handleDelete = (event) => {
     event.stopPropagation();
@@ -26,7 +26,7 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
     <>
       <ThumbnailContainer onClick={() => setViewerVisible(true)}>
         <ThumbnailImage src={post.imageUrl} alt={post.title} />
-        { desktop && (
+        { !mobile && (
           <ThumbnailHoverContainer>
             <ThumbnailTitle>
               {post.title}

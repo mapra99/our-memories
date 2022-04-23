@@ -1,6 +1,6 @@
 import React, { useState, useContext, FormEvent } from 'react';
 import { Modal } from '../Modal';
-import { ModalTitle } from '../ModalTitle';
+import { Title } from '../Title';
 import { InputField } from '../InputField';
 import { InputGroup } from '../InputGroup';
 import { InputLabel } from '../InputLabel';
@@ -32,9 +32,9 @@ export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalPro
 
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>
+      <Title>
         Add a new photo
-      </ModalTitle>
+      </Title>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <InputGroup>

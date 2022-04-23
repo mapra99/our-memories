@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # react namespace
   scope module: 'react' do
     get '/posts/(*subpath)', action: 'index'
+    get '/albums/(*subpath)', action: 'index'
   end
 
   # api namespace

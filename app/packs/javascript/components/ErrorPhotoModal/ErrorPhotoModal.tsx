@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorPhotoModalProps } from './types'
 import { Modal } from '../Modal';
-import { ModalTitle } from '../ModalTitle';
+import { Title } from '../Title';
 import { ActionButton } from '../ActionButton';
 import { ModalActionButtons } from '../ModalActionButtons';
 import { CrossIcon } from '../../icons/CrossIcon'
@@ -13,9 +13,9 @@ export const ErrorPhotoModal = ({onClose}: ErrorPhotoModalProps) => (
       <CrossIcon />
     </ErrorPhotoModalIconWrap>
 
-    <ModalTitle align="center" margin="20px 0 60px">
+    <Title align="center" margin="20px 0 60px">
       There was an error. Please try again later
-    </ModalTitle>
+    </Title>
 
     <ModalActionButtons>
       <ActionButton type="button" onClick={() => onClose()}>
