@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { AlbumsContext } from '../../contexts/AlbumsContext'
 import { AlbumsList } from '../../components/AlbumsList';
 import { Title } from '../../components/Title';
-import { AlbumsContainer } from './styled';  
+import { NewAlbum } from '../../components/NewAlbum';
+import { AlbumsContainer, AlbumsHeading, AlbumsActions } from './styled';  
 
 export const Albums = () => {
   const { albums, fetchAlbums } = useContext(AlbumsContext)
@@ -13,7 +14,13 @@ export const Albums = () => {
 
   return (
     <AlbumsContainer>
-      <Title>Albums</Title>
+      <AlbumsHeading>
+        <Title>Albums</Title>
+        <AlbumsActions>
+          <NewAlbum />
+        </AlbumsActions>
+      </AlbumsHeading>
+
       <AlbumsList albums={albums} />
     </AlbumsContainer>
   )

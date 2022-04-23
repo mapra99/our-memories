@@ -1,20 +1,20 @@
 import React from 'react';
-import { ErrorPhotoModalProps } from './types'
+import { SuccessModalProps } from './types';
 import { Modal } from '../Modal';
-import { Title } from '../Title';
 import { ActionButton } from '../ActionButton';
 import { ModalActionButtons } from '../ModalActionButtons';
-import { CrossIcon } from '../../icons/CrossIcon'
-import { ErrorPhotoModalIconWrap } from './ErrorPhotoModal.styled'
+import { Title } from '../Title';
+import { SuccessModalIconWrap } from './styled'
+import { CheckIcon } from '../../icons/CheckIcon'
 
-export const ErrorPhotoModal = ({onClose}: ErrorPhotoModalProps) => (
+export const SuccessModal = ({message, onClose}: SuccessModalProps) => (
   <Modal onClose={onClose}>
-    <ErrorPhotoModalIconWrap>
-      <CrossIcon />
-    </ErrorPhotoModalIconWrap>
+    <SuccessModalIconWrap>
+      <CheckIcon/>
+    </SuccessModalIconWrap>
 
     <Title align="center" margin="20px 0 60px">
-      There was an error. Please try again later
+      { message }
     </Title>
 
     <ModalActionButtons>

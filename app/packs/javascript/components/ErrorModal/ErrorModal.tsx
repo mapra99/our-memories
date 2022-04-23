@@ -1,20 +1,20 @@
 import React from 'react';
-import { SuccessPhotoModalProps } from './types';
+import { ErrorModalProps } from './types'
 import { Modal } from '../Modal';
+import { Title } from '../Title';
 import { ActionButton } from '../ActionButton';
 import { ModalActionButtons } from '../ModalActionButtons';
-import { Title } from '../Title';
-import { SuccessPhotoModalIconWrap } from './SuccessPhotoModal.styled'
-import { CheckIcon } from '../../icons/CheckIcon'
+import { CrossIcon } from '../../icons/CrossIcon'
+import { ErrorModalIconWrap } from './styled'
 
-export const SuccessPhotoModal = ({onClose}: SuccessPhotoModalProps) => (
+export const ErrorModal = ({onClose}: ErrorModalProps) => (
   <Modal onClose={onClose}>
-    <SuccessPhotoModalIconWrap>
-      <CheckIcon/>
-    </SuccessPhotoModalIconWrap>
+    <ErrorModalIconWrap>
+      <CrossIcon />
+    </ErrorModalIconWrap>
 
     <Title align="center" margin="20px 0 60px">
-      Your photo was uploaded successfully!
+      There was an error. Please try again later
     </Title>
 
     <ModalActionButtons>

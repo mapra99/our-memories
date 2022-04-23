@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const SuccessPhotoModalIconWrap = styled.div`
+export const SuccessModalIconWrap = styled.div`
   width: 100px;
   margin: auto;
 `

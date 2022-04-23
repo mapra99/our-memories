@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react"
-import { IAlbumsContext } from './types'
+import { IAlbumsContext, AlbumPayload } from './types'
 import { AlbumModel } from '../../models';
 import { server } from '../../utils/server';
 import { ALBUMS_BASE_URL } from '../../constants';
@@ -28,10 +28,23 @@ export const AlbumsProvider: React.FC = ({children}) => {
     setAlbums(newAlbums);
   }
 
+  const createAlbum = async (payload: AlbumPayload) => {
+    const response = await server.post(`${ALBUMS_BASE_URL}`, { album: payload });
+    const data = await response.json();
+
+    setAlbums([
+      data,
+      ...albums
+    ])
+
+    return data;
+  }
+
   const contextVal: IAlbumsContext = {
     albums,
     fetchAlbums,
-    fetchAlbum
+    fetchAlbum,
+    createAlbum
   }
 
   return (
