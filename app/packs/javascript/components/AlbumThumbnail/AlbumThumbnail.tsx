@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthContext';
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 import { replaceParams } from '../../utils/replaceParams';
 import { AlbumThumbnailProps } from './types';
@@ -30,7 +29,7 @@ export const AlbumThumbnail = ({album}: AlbumThumbnailProps) => {
         <ThumbnailContainer>
           <ThumbnailImagesWrapper>
             { previewPosts.map(post => (
-              <ThumbnailImage src={post.imageUrl} alt={post.title} />
+              <ThumbnailImage key={post.id} src={post.imageUrl} alt={post.title} />
             )) }
           </ThumbnailImagesWrapper>
           { !mobile && (

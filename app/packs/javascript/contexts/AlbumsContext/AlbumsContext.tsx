@@ -17,9 +17,21 @@ export const AlbumsProvider: React.FC = ({children}) => {
     return data
   }
 
+  const fetchAlbum = async (id) => {
+    const response = await server.get(`${ALBUMS_BASE_URL}/${id}`);
+    const data = await response.json();
+
+    const newAlbums = [...albums];
+    const newAlbumIndex = newAlbums.findIndex(a => a.id === id) || 0;
+    newAlbums[newAlbumIndex] = data;
+
+    setAlbums(newAlbums);
+  }
+
   const contextVal: IAlbumsContext = {
     albums,
-    fetchAlbums
+    fetchAlbums,
+    fetchAlbum
   }
 
   return (

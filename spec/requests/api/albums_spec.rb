@@ -9,7 +9,7 @@ RSpec.describe Api::AlbumsController, type: :controller do
       sign_in user
     end
 
-    context 'GET' do
+    context '#index' do
       describe 'with no params' do
         let!(:albums) { create_list :album, 5, user: user }
 
@@ -78,7 +78,7 @@ RSpec.describe Api::AlbumsController, type: :controller do
       end
     end
 
-    context 'POST' do
+    context '#create' do
       describe 'album submission' do
         let(:album_params) do
           {
@@ -106,10 +106,38 @@ RSpec.describe Api::AlbumsController, type: :controller do
         end
       end
     end
+
+    context '#show' do
+      describe 'with pagination params' do
+        let(:album) { create :album, user: user }
+
+        before :each do
+          get :show, params: { id: album.id }, format: :json
+          @payload = JSON.parse(response.body)
+        end
+
+        it 'should respond with a 200 status' do
+          expect(response.status).to eq(200)
+        end
+
+        it 'is not empty' do
+          expect(@payload).not_to be_empty
+        end
+
+        example 'payload structure' do
+          expect(@payload).to have_key('name')
+          expect(@payload).to have_key('id')
+          expect(@payload).to have_key('posts')
+          expect(@payload).to have_key('createdAt')
+          expect(@payload).to have_key('updatedAt')
+          expect(@payload).to have_key('user')
+        end
+      end
+    end
   end
 
   describe 'when not authenticated' do
-    context 'GET' do
+    context '#index' do
       let!(:albums) { create_list :album, 5 }
 
       before :each do
@@ -121,9 +149,19 @@ RSpec.describe Api::AlbumsController, type: :controller do
       end
     end
 
-    context 'POST' do
+    context '#create' do
       before :each do
         post :create, params: {}, format: :json
+      end
+
+      it 'should respond with a 401 status' do
+        expect(response.status).to eq(401)
+      end
+    end
+
+    context '#show' do
+      before :each do
+        get :show, params: { id: 1 }, format: :json
       end
 
       it 'should respond with a 401 status' do

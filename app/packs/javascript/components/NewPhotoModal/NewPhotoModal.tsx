@@ -12,7 +12,7 @@ import { NewPhotoModalProps } from './types';
 import { IBlob } from '../../hooks/useDirectUpload/types';
 import { PostsContext, IPostsContext } from '../../contexts/PostsContext';
 
-export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalProps) => {
+export const NewPhotoModal = ({ albumId, onClose, onSuccess, onErrors }: NewPhotoModalProps) => {
   const [title, setTitle] = useState<string>("");
   const [blob, setBlob] = useState<IBlob | null>(null);
   const { createPost } = useContext(PostsContext) as IPostsContext;
@@ -22,7 +22,7 @@ export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalPro
     // TODO: Validate form fields here
     if (!title || !blob) return;
     try {
-      await createPost({ title, blob })
+      await createPost({ title, blob, albumId })
       onSuccess();
     } catch(err) {
       onErrors()

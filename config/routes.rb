@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # api namespace
   namespace :api do
     defaults format: :json do
-      resources :albums, only: %i[index create]
+      resources :albums, only: %i[index create show]
       resources :posts, only: %i[index create destroy update]
       resources :users, only: [] do
         get 'current', on: :collection

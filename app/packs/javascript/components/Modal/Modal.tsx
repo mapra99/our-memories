@@ -36,7 +36,7 @@ export const Modal = ({ children, onClose, maxWidth, onMoved, carousel=false, st
   }
 
   return (
-    <ModalContainer onKeyDown={() => console.log("holi")}>
+    <ModalContainer>
       { carousel ? (
         <Splide options={splideOptions} onMoved={onMoved}>
           {children.map((child, index) => (

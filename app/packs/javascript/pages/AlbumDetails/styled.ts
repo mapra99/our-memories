@@ -6,4 +6,15 @@ export const AlbumDetailsContainer = styled.div`
 
 export const AlbumDetailPosts = styled.div`
   margin: 23px 0;
-`
+`;
+
+export const AlbumDetailsHeading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const AlbumDetailsActions = styled.div`
+  display: flex;
+  gap: 10px;
+`;

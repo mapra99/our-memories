@@ -6,6 +6,10 @@ class Api::AlbumsController < ApiController
     @albums = @albums.paginate(@limit, @offset) if @limit.present?
   end
 
+  def show
+    @album = Album.find(params[:id])
+  end
+
   def create
     @album = current_user.albums.new(album_params)
 

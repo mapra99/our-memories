@@ -1,6 +1,6 @@
 json.id album.id
 json.name album.name
-json.posts album.posts do |post|
+json.posts album.posts.sorted_by_newest do |post|
   json.partial! 'api/posts/post', post: post
 end
 json.user do
