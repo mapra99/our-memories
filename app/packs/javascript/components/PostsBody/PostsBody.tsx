@@ -4,11 +4,14 @@ import { PostsBodyContainer } from './PostsBody.styled'
 import { PostsGallery } from '../PostsGallery'
 
 export const PostsBody = () => {
-  const {posts} = useContext(PostsContext) as IPostsContext
+  const { posts, fetchPageOnCallback } = useContext(PostsContext) as IPostsContext
+  const handleCarouselSwap = (_event, newIndex) => {
+    if (newIndex >= (posts.length - 5)) fetchPageOnCallback();
+  }
 
   return (
     <PostsBodyContainer>
-      <PostsGallery posts={posts} />
+      <PostsGallery posts={posts} onCarouselSwap={handleCarouselSwap} />
     </PostsBodyContainer>
   )
 }
