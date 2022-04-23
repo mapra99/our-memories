@@ -20,10 +20,10 @@ export const ThumbnailImagesWrapper = styled.div`
 
 export const ThumbnailImage = styled.div`
   height: 100%;
-  object-fit: cover;
   flex: 1 1;
   background-image: url(${props => props.src});
   background-position: center;
+  background-size: cover;
 
   &:first-child {
     border-radius: 16px 0 0 16px;
