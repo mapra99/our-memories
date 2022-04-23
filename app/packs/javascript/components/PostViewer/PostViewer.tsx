@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import { ModalTitle } from '../ModalTitle';
+import { Title } from '../Title';
 import { DangerButton } from '../DangerButton';
 import {
   PostViewerImage,
@@ -12,9 +12,9 @@ export const PostViewer = ({ post, onDelete }: PostViewerProps) => {
 
   return (
     <>
-      <ModalTitle>
+      <Title>
         {post.title}
-      </ModalTitle>
+      </Title>
 
       <PostViewerImage src={post.imageUrl} />
 

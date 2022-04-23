@@ -1,6 +1,6 @@
 import React, { useState, useContext, FormEvent } from 'react';
 import { Modal } from '../Modal';
-import { ModalTitle } from '../ModalTitle';
+import { Title } from '../Title';
 import { InputField } from '../InputField';
 import { InputGroup } from '../InputGroup';
 import { InputLabel } from '../InputLabel';
@@ -12,7 +12,7 @@ import { NewPhotoModalProps } from './types';
 import { IBlob } from '../../hooks/useDirectUpload/types';
 import { PostsContext, IPostsContext } from '../../contexts/PostsContext';
 
-export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalProps) => {
+export const NewPhotoModal = ({ albumId, onClose, onSuccess, onErrors }: NewPhotoModalProps) => {
   const [title, setTitle] = useState<string>("");
   const [blob, setBlob] = useState<IBlob | null>(null);
   const { createPost } = useContext(PostsContext) as IPostsContext;
@@ -22,7 +22,7 @@ export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalPro
     // TODO: Validate form fields here
     if (!title || !blob) return;
     try {
-      await createPost({ title, blob })
+      await createPost({ title, blob, albumId })
       onSuccess();
     } catch(err) {
       onErrors()
@@ -32,9 +32,9 @@ export const NewPhotoModal = ({ onClose, onSuccess, onErrors }: NewPhotoModalPro
 
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>
+      <Title>
         Add a new photo
-      </ModalTitle>
+      </Title>
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <InputGroup>

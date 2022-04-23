@@ -2,10 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { ActionButton } from '../ActionButton';
 import { NewPhotoModal } from '../NewPhotoModal';
-import { SuccessPhotoModal } from '../SuccessPhotoModal';
-import { ErrorPhotoModal } from '../ErrorPhotoModal';
+import { SuccessModal } from '../SuccessModal';
+import { ErrorModal } from '../ErrorModal';
+import { NewPhotoProps } from './types';
 
-export const NewPhoto = () => {
+export const NewPhoto = ({ albumId }: NewPhotoProps) => {
   const [formModalVisible, setFormModalVisible] = useState(false);
   const [successModalVisible, setSuccessModalVisible] = useState(false);
   const [errorsModalVisible, setErrorsModalVisible] = useState(false);
@@ -18,16 +19,18 @@ export const NewPhoto = () => {
 
       { formModalVisible && (
         <NewPhotoModal
+          albumId={albumId}
           onClose={() => setFormModalVisible(false)}
           onSuccess={() => setSuccessModalVisible(true)}
           onErrors={() => setErrorsModalVisible(true)} />
       )}
       { successModalVisible && (
-        <SuccessPhotoModal
+        <SuccessModal
+          message="Your photo was uploaded successfully!"
           onClose={() => setSuccessModalVisible(false)} />
       )}
       { errorsModalVisible && (
-        <ErrorPhotoModal
+        <ErrorModal
           onClose={() => setErrorsModalVisible(false)} />
       )}
     </>

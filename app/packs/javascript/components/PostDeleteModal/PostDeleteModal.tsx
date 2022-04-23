@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { PostsContext } from '../../contexts/PostsContext';
 import { Modal } from '../Modal';
-import { ModalTitle } from '../ModalTitle';
+import { Title } from '../Title';
 import { ModalActionButtons } from '../ModalActionButtons';
 import { CancelButton } from '../CancelButton';
 import { DangerButton } from '../DangerButton';
@@ -19,9 +19,9 @@ export const PostDeleteModal = ({ post, onClose }: PostDeleteModalProps) => {
 
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>
+      <Title>
         Are you sure?
-      </ModalTitle>
+      </Title>
 
       <ModalActionButtons>
           <CancelButton type="button" onClick={onClose} >

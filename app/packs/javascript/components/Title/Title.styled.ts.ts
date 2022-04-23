@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants';
-import { ModalTitleProps } from './types';
+import { TitleProps } from './types';
 
-export const ModalTitle = styled.h1<ModalTitleProps>`
+export const Title = styled.h1<TitleProps>`
   font-family: 'Noto Sans';
   font-size: 24px;
   font-weight: 500;

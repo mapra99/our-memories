@@ -6,7 +6,7 @@ import { PostModel } from '../../models/PostModel'
 import { splitInChunks } from '../../utils/splitInChunks'
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
-export const PostsGallery = ({ posts }: PostsGalleryProps) => {
+export const PostsGallery = ({ posts, onCarouselSwap }: PostsGalleryProps) => {
   const { mobile } = useBreakpoint();
   const postsChunks = splitInChunks(posts, mobile ? 1 : 3);
 
@@ -14,7 +14,14 @@ export const PostsGallery = ({ posts }: PostsGalleryProps) => {
     <PostsGalleryContainer>
       { postsChunks.map((chunk: PostModel[], index: number) => (
         <PostsGalleryColumn key={index}>
-          { chunk.map(post => <PostThumbnail post={post} key={post.id} />) }
+          { chunk.map(post => (
+            <PostThumbnail
+              posts={posts}
+              activePostIndex={posts.findIndex(p => p.id === post.id)}
+              key={post.id}
+              onCarouselSwap={onCarouselSwap}
+            />)
+          )}
         </PostsGalleryColumn>
       ))}
     </PostsGalleryContainer>

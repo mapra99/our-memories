@@ -11,11 +11,12 @@ import {
   ThumbnailDeleteButton } from './PostThumbnail.styled';
 import { useBreakpoint } from '../../hooks/useBreakpoint'
 
-export const PostThumbnail = ({post}: PostThumbnailProps) => {
+export const PostThumbnail = ({posts, activePostIndex, onCarouselSwap}: PostThumbnailProps) => {
   const { currentUser } = useContext(AuthContext);
   const [viewerVisible, setViewerVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-  const { desktop } = useBreakpoint();
+  const { mobile } = useBreakpoint();
+  const post = posts[activePostIndex];
 
   const handleDelete = (event) => {
     event.stopPropagation();
@@ -26,7 +27,7 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
     <>
       <ThumbnailContainer onClick={() => setViewerVisible(true)}>
         <ThumbnailImage src={post.imageUrl} alt={post.title} />
-        { desktop && (
+        { !mobile && (
           <ThumbnailHoverContainer>
             <ThumbnailTitle>
               {post.title}
@@ -42,9 +43,11 @@ export const PostThumbnail = ({post}: PostThumbnailProps) => {
 
       { viewerVisible && (
         <PostsViewerCarousel
-          activePost={post}
+          posts={posts}
+          activePostIndex={activePostIndex}
           onClose={() => setViewerVisible(false)}
           onDelete={handleDelete}
+          onCarouselSwap={onCarouselSwap}
         />
       )}
 
