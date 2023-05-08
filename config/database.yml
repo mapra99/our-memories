@@ -87,6 +87,4 @@ test:
 #
 production:
   <<: *default
-  database: my_unsplash_api_production
-  username: my_unsplash_api
-  password: <%= ENV['OUR_MEMORIES_MONOLITH_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
