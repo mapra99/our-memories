@@ -8,12 +8,12 @@ export const useDirectUpload = (): DirectUploadTypes => {
   const [loading, setLoading] = useState<boolean>(false);
   const [fileSrc, setFileSrc] = useState<string | null>(null);
 
-  const REACT_APP_DIRECT_UPLOADS_URL = process.env.REACT_APP_DIRECT_UPLOADS_URL;
+  const DIRECT_UPLOAD_URL = `/rails/active_storage/direct_uploads`;
 
   const uploadFile = async (file: File) => {
     setLoading(true);
     try {
-      const upload = await new DirectUpload(file, REACT_APP_DIRECT_UPLOADS_URL || '');
+      const upload = await new DirectUpload(file, DIRECT_UPLOAD_URL || '');
 
       await upload.create((error, blob) => {
         if (error) setErrors(error);
