@@ -35,6 +35,7 @@ gem 'faker', '~> 2.17.0'
 gem 'devise'
 
 gem 'delayed_job_active_record'
+gem "delayed_job_web"
 
 gem 'daemons'
 
