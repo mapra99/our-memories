@@ -14,10 +14,14 @@ kill_timeout = "5s"
 [env]
   PRIMARY_REGION = "sjc"
 
+[processes]
+  web = "bin/rails server"
+  worker = "bin/rake jobs:work"
+
 [[services]]
   protocol = "tcp"
   internal_port = 3000
-  processes = ["app"]
+  processes = ["web"]
 
   [[services.ports]]
     port = 80
