@@ -32,7 +32,12 @@ gem "aws-sdk-s3", require: false
 
 gem 'faker', '~> 2.17.0'
 
- gem 'devise'
+gem 'devise'
+
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+
+gem 'daemons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
